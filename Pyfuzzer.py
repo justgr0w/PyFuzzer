@@ -79,6 +79,8 @@ def main():
         if verify_url[0] not in ['http', 'https']:
             banner()
             print (c.RED+"[!] Please checkout your URL http:// or https://"+c.RESET)
+            sys.exit(0)
+
     if not args.url:
         banner()
         print(f"{c.RED}[!] Enter the URL objetive --url=\"{c.YELLOW}Target{c.RESET}{c.RED}\"{c.RESET}")
@@ -88,13 +90,14 @@ def main():
     if args.cms:
         banner()
         if args.cms not in ["wp","dp","jm", "php"]:
-            print (c.RED+"[!] Please chose the cms name {dict, wp, dp...}")
+            print (c.RED+"[!] Please chose the cms name {dict, wp, dp...}"+c.RESET)
             sys.exit(0)
 	
     if args.wordlist:
         banner()
         if not os.path.isfile(str(args.wordlist)):
             print (c.RED+"[!] Please checkout your Custom wordlist path"+c.RESET)
+            print(f"Example: python Pyfuzzer.py --url={c.YELLOW}Target{c.RESET} -w {c.GREEN}C:/dictionaries/rockyou.txt{c.RESET}")
             sys.exit(0)
 
     if args.filter:
@@ -102,7 +105,6 @@ def main():
             print(f"{c.RED}Error, the parameter -f needs the parameter -v{c.RESET}\nExample: {c.YELLOW}./Pyfuzzer.py -u [TARGET] --filter=hc -v 404 505")
             sys.exit(1)
 
-	
     if not args.filter:
         if args.val:
             print(f"{c.RED}Error, the parameter -v needs the parameter --filter{c.RESET}\nExample: {c.YELLOW}./Pyfuzzer.py -u [TARGET] --filter=hc -v 404 505")
@@ -119,8 +121,7 @@ def startinit_Fuzz(url):
     print("    Response        Time                Payload")
     print("".center(50, "*"))
 
-def Fuzz1(code, url, paths):
-    
+def color_code(url, code, paths):
     if code == "200":
         print("[+] C={GREEN}{code}{RESET}            {time}             \"{paths}\"".format(time=time.strftime("%H:%M:%S"),code=code,paths=paths, GREEN=c.GREEN, RESET=c.RESET))      
            
@@ -133,16 +134,18 @@ def Fuzz1(code, url, paths):
     else:
         print("[+] {RESET}C={code}{RESET}            \"{time}\"        \"{paths}\"".format(time=time.strftime("%H:%M:%S"),code=code,paths=paths, RESET=c.RESET))
 
+def Fuzz1(code, url, paths):
+    color_code(url, code, paths)
+
 def Fuzz2(code, url, paths, val):
     # Hide Code
-    print(val)
     if code not in val:
-        print("[+] C={GREEN}{code}{RESET}            {time}             \"{paths}\"".format(time=time.strftime("%H:%M:%S"),code=code,paths=paths, GREEN=c.GREEN, RESET=c.RESET))
+        color_code(url, code, paths)
 
 def Fuzz3(code, url, paths, val):
     # Show Code
     if code in val:
-        print("[+] C={GREEN}{code}{RESET}            {time}             \"{paths}\"".format(time=time.strftime("%H:%M:%S"),code=code,paths=paths, GREEN=c.GREEN, RESET=c.RESET))
+        color_code(url, code, paths)
 
 def init_Fuzz(url, cms_type, custom_wordlist, filter, val):
     
@@ -156,6 +159,7 @@ def init_Fuzz(url, cms_type, custom_wordlist, filter, val):
         words = [w.strip() for w in open(wordlists["dict"], "rb").readlines()] #parse wordlist
     
     try:
+        filter = str(filter)
         startinit_Fuzz(url)
         for paths in words:
             paths2 = paths
