@@ -23,7 +23,7 @@ wordlists ={"dict":"db/discover_file_paths/predictable/dicc.txt",
 
 def banner():
     print(c.RED)
-    os.system("figlet -c PyFuzzer")
+    os.system("figlet PyFuzzer")
     print(c.RESET)
 
 def main():
@@ -94,19 +94,21 @@ def main():
             sys.exit(0)
 	
     if args.wordlist:
-        banner()
         if not os.path.isfile(str(args.wordlist)):
+            banner()
             print (c.RED+"[!] Please checkout your Custom wordlist path"+c.RESET)
             print(f"Example: python Pyfuzzer.py --url={c.YELLOW}Target{c.RESET} -w {c.GREEN}C:/dictionaries/rockyou.txt{c.RESET}")
             sys.exit(0)
 
     if args.filter:
         if not args.val:
+            banner()
             print(f"{c.RED}Error, the parameter -f needs the parameter -v{c.RESET}\nExample: {c.YELLOW}./Pyfuzzer.py -u [TARGET] --filter=hc -v 404 505")
             sys.exit(1)
 
     if not args.filter:
         if args.val:
+            banner()
             print(f"{c.RED}Error, the parameter -v needs the parameter --filter{c.RESET}\nExample: {c.YELLOW}./Pyfuzzer.py -u [TARGET] --filter=hc -v 404 505")
             sys.exit(1)
 
@@ -121,31 +123,31 @@ def startinit_Fuzz(url):
     print("    Response        Time                Payload")
     print("".center(50, "*"))
 
-def color_code(url, code, paths):
-    if code == "200":
+def color_code(code, paths):
+    if code == 200:
         print("[+] C={GREEN}{code}{RESET}            {time}             \"{paths}\"".format(time=time.strftime("%H:%M:%S"),code=code,paths=paths, GREEN=c.GREEN, RESET=c.RESET))      
            
-    elif code == "301":
+    elif code == 301:
         print("[+] C={BLUE}{code}{RESET}            {time}             \"{paths}\"".format(time=time.strftime("%H:%M:%S"),code=code,paths=paths, BLUE=c.BLUE, RESET=c.RESET))
     
-    elif code == "404":
+    elif code == 404:
         print("[+] C={RED}{code}{RESET}            {time}             \"{paths}\"".format(time=time.strftime("%H:%M:%S"),code=code,paths=paths, RED=c.RED, RESET=c.RESET))
             
     else:
         print("[+] {RESET}C={code}{RESET}            \"{time}\"        \"{paths}\"".format(time=time.strftime("%H:%M:%S"),code=code,paths=paths, RESET=c.RESET))
 
-def Fuzz1(code, url, paths):
-    color_code(url, code, paths)
+def Fuzz1(code, paths):
+    color_code(code, paths)
 
-def Fuzz2(code, url, paths, val):
+def Fuzz2(code, paths, val):
     # Hide Code
     if code not in val:
-        color_code(url, code, paths)
+        color_code(code, paths)
 
-def Fuzz3(code, url, paths, val):
+def Fuzz3(code, paths, val):
     # Show Code
     if code in val:
-        color_code(url, code, paths)
+        color_code(code, paths)
 
 def init_Fuzz(url, cms_type, custom_wordlist, filter, val):
     
@@ -178,14 +180,14 @@ def init_Fuzz(url, cms_type, custom_wordlist, filter, val):
             
             if filter.upper() == "HC":
                 # Hide Code
-                Fuzz2(code, url, paths2, val)
+                Fuzz2(code, paths2, val)
 
             elif filter.upper() == "SC":
                 # Show Code
-                Fuzz3(code, url, paths2, val)
+                Fuzz3(code, paths2, val)
 
             else:
-                Fuzz1(code, url, paths2)
+                Fuzz1(code, paths2)
             
     except Exception as e:
         print(f"Hubo un error, {e}")
