@@ -88,8 +88,8 @@ def main():
         sys.exit(0)
     
     if args.cms:
-        banner()
-        if args.cms not in ["wp","dp","jm", "php"]:
+        if args.cms not in ["wp","dp","jm", "php", "porn"]:
+            banner()
             print (c.RED+"[!] Please chose the cms name {dict, wp, dp...}"+c.RESET)
             sys.exit(0)
 	
@@ -151,14 +151,19 @@ def Fuzz3(code, paths, val):
 
 def init_Fuzz(url, cms_type, custom_wordlist, filter, val):
     
-    if cms_type:
-        words = [w.strip() for w in open(wordlists[cms_type], "rb").readlines()] #parse wordlist
-    
-    elif custom_wordlist:
-        words = [w.strip() for w in open(str(custom_wordlist), "rb").readlines()]
-    
-    else:
-        words = [w.strip() for w in open(wordlists["dict"], "rb").readlines()] #parse wordlist
+    try:
+        if cms_type:
+            words = [w.strip() for w in open(wordlists[cms_type], "rb").readlines()] #parse wordlist
+        
+        elif custom_wordlist:
+            words = [w.strip() for w in open(str(custom_wordlist), "rb").readlines()]
+        
+        else:
+            words = [w.strip() for w in open(wordlists["dict"], "rb").readlines()] #parse wordlist
+
+    except Exception as e:
+        print(f"{c.RED}[!] There was an error searching the wordlist in the db directory...!{c.RESET}")
+        sys.exit(2)
     
     try:
         filter = str(filter)
