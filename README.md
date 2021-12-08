@@ -51,7 +51,7 @@ $ python Pyfuzzer.py -u https://127.0.0.1 -c wp --filter=hc -v 404 403
 ~~~
 
 * Example
-<img src="https://github.com/justgr0w/PyFuzzer/tree/main/photos/photos/fuzz.svg" width="500">
+<img src="https://github.com/justgr0w/PyFuzzer/blob/main/photos/fuzz.svg" width="500">
 
 ## How to Install
 #### Clone
