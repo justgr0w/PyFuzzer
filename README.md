@@ -1,5 +1,6 @@
 # PyFuzzer
 <img src="https://github.com/justgr0w/PyFuzzer/blob/main/photos/logo.png" width="500">
+
 ## About Pyfuzzer
 it was just a project idea, i did it and here it is.
 
