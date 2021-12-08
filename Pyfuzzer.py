@@ -90,7 +90,7 @@ def main():
     if args.cms:
         if args.cms not in ["wp","dp","jm", "php", "porn"]:
             banner()
-            print (c.RED+"[!] Please chose the cms name {dict, wp, dp...}"+c.RESET)
+            print (c.RED+"[!] Please choose the cms name {dict, wp, dp...}"+c.RESET)
             sys.exit(0)
 	
     if args.wordlist:
@@ -213,5 +213,5 @@ def init_threads(full):
     executor.submit(request(full))
     executor.submit(request(full))...
 
-    In the future, I update the code to make it more complex 
+    In the future, I'll update the code to make it more complex 
     with regular expressions and much more."""
