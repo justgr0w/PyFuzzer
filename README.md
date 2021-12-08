@@ -58,7 +58,7 @@ $ python angryFuzzer.py
 
 ## Dependencies
  in Linux enviroments, you need ,to have figlet installed.
- Install the following dependencies with python-pip
- ```bash
+* Install the following dependencies with python-pip
+ ```
 $ sudo pip install -r requirements.txt
 ```
