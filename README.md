@@ -6,6 +6,9 @@ it was just a project idea, i did it and here it is.
 ## What is a Fuzzer?
 A fuzzer is a program that tries to discover security vulnerabilities by sending an arbitrary input to an application. If the program contains a vulnerability that can lead to an exception, crash or server error (in the case of web apps), it can be determined that a vulnerability has been discovered. Fuzzers are often called Fault Injectors for this reason, they generate faults and send them to an application. Generally fuzzers are fine for encountering buffer overflow, DoS, SQL Injection, XSS, and Format String bugs. They do a poor job finding vulnerabilities related to information discovery, encryption flaws, and any other vulnerabilities that do not cause the program to crash.
 
+## Recomendation
+My recommendation is that you use full word lists, like [SecLists](https://github.com/danielmiessler/SecLists).
+
 ## small Documentation
 ~~~
 $ python Pyfuzzer.py -h
