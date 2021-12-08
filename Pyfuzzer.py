@@ -1,5 +1,5 @@
-#!/usr/bin/env python
-# -*- coding:utf-8 -*- 
+#!/usr/bin/python3
+#   _*_coding: utf-8 _*_
 
 # Tool created by justgr0w(David León) - TI & SEC
 
@@ -8,7 +8,7 @@
 import argparse
 import requests
 import os
-import re
+# import re Soon :)
 import time
 import sys
 from modules.colors import colors as c
@@ -169,8 +169,8 @@ def init_Fuzz(url, cms_type, custom_wordlist, filter, val):
         filter = str(filter)
         startinit_Fuzz(url)
         for paths in words:
-            paths2 = paths
-            paths2 = paths2.decode("UTF-8")
+            payload = paths
+            payload = payload.decode("UTF-8")
             paths = paths.decode("UTF-8")
             
             if "/" not in paths[0]:
@@ -185,14 +185,14 @@ def init_Fuzz(url, cms_type, custom_wordlist, filter, val):
             
             if filter.upper() == "HC":
                 # Hide Code
-                Fuzz2(code, paths2, val)
+                Fuzz2(code, payload, val)
 
             elif filter.upper() == "SC":
                 # Show Code
-                Fuzz3(code, paths2, val)
+                Fuzz3(code, payload, val)
 
             else:
-                Fuzz1(code, paths2)
+                Fuzz1(code, payload)
             
     except Exception as e:
         print(f"Hubo un error, {e}")
@@ -204,3 +204,14 @@ if __name__ == "__main__":
     except KeyboardInterrupt as e:
         print("\n[!]...")
         sys.exit(0)
+
+"""
+import threading
+from concurrent.futures import ThreadPoolExecutor
+def init_threads(full):
+    executor = ThreadPoolExecutor(max_workers=2)
+    executor.submit(request(full))
+    executor.submit(request(full))...
+
+    In the future, I update the code to make it more complex 
+    with regular expressions and much more."""
