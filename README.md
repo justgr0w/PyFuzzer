@@ -1,10 +1,12 @@
 # PyFuzzer
-
+<img src="https://github.com/justgr0w/Pyfuzzer/src/photos/logo.png" width="500">
 ## About Pyfuzzer
-it was just a project idea, i did it and here it is
+it was just a project idea, i did it and here it is.
+
+## What is a Fuzzer?
+A fuzzer is a program that tries to discover security vulnerabilities by sending an arbitrary input to an application. If the program contains a vulnerability that can lead to an exception, crash or server error (in the case of web apps), it can be determined that a vulnerability has been discovered. Fuzzers are often called Fault Injectors for this reason, they generate faults and send them to an application. Generally fuzzers are fine for encountering buffer overflow, DoS, SQL Injection, XSS, and Format String bugs. They do a poor job finding vulnerabilities related to information discovery, encryption flaws, and any other vulnerabilities that do not cause the program to crash.
 
 ## small Documentation
-
 ~~~
 $ python Pyfuzzer.py -h
 usage: Pyfuzzer.py [-h] [-u Target URL] [-c CMS] [-w WordList] [-f Filter] [-v [Values [Values ...]]]
@@ -22,8 +24,9 @@ optional arguments:
                         Filter the output, hc: Hide code; sc: Show code only
   -v [Values [Values ...]], --values [Values [Values ...]]
                         Values for the --filter parameter
-                        
+               
 ~~~
+<img src="https://github.com/justgr0w/Pyfuzzer/src/photos/help.png" width="500">
 
 Example of its use:
 
