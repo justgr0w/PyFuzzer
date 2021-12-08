@@ -67,6 +67,7 @@ $ python angryFuzzer.py
 ```
 
 ## Dependencies
+ Not working in Python 2.x
  in Linux enviroments, you need ,to have figlet installed.
 * Install the following dependencies with python-pip
  ```
