@@ -1,5 +1,5 @@
 # PyFuzzer
-<img src="https://github.com/justgr0w/PyFuzzer/photos/logo.png" width="500">
+<img src="https://github.com/justgr0w/PyFuzzer/photos/logo.svg" width="500">
 ## About Pyfuzzer
 it was just a project idea, i did it and here it is.
 
@@ -26,7 +26,7 @@ optional arguments:
                         Values for the --filter parameter
                
 ~~~
-<img src="https://github.com/justgr0w/PyFuzzer/photos/help.png" width="500">
+<img src="https://github.com/justgr0w/PyFuzzer/photos/help.svg" width="500">
 
 Example of its use:
 
@@ -51,7 +51,7 @@ $ python Pyfuzzer.py -u https://127.0.0.1 -c wp --filter=hc -v 404 403
 ~~~
 
 * Example
-<img src="https://github.com/justgr0w/PyFuzzer/photos/fuzz.png" width="500">
+<img src="https://github.com/justgr0w/PyFuzzer/photos/fuzz.svg" width="500">
 
 ## How to Install
 #### Clone
