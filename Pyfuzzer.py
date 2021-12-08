@@ -28,7 +28,7 @@ def banner():
 
 def main():
     
-    pars = argparse.ArgumentParser(description="PyFuzzer, discover hidden files or directories")
+    pars = argparse.ArgumentParser(description="PyFuzzer, Discover hidden files and directories on a web server. The application tries to find url relative paths of the given website by comparing them with a given set...")
     
     pars.add_argument("-u", "--url"
     , metavar="Target URL"
